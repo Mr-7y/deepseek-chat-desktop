@@ -1,0 +1,30 @@
+# Build output
+dist/
+build/bin/
+build/app/
+*.exe
+*.dll
+*.dylib
+*.so
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node
+node_modules/
+
+# Go
+bin/
+pkg/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Wails
+wails3.exe

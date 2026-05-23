@@ -1,0 +1,32 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "deepseek-chat-desktop",
+  "outputfilename": "deepseek-chat-desktop",
+  "frontend:install": "cd frontend && npm install",
+  "frontend:build": "cd frontend && npm run build",
+  "frontend:dev:watcher": "cd frontend && npm run dev",
+  "frontend:dev:serverUrl": "http://localhost:5173",
+  "autoindent": "\t",
+  "obfuscated": false,
+  "nsis": {
+    "warningsAsErrors": true,
+    "languages": ["SimpChinese", "English"],
+    "language": "SimpChinese",
+    "installerIcon": "build/windows/icon.ico",
+    "uninstallerIcon": "build/windows/icon.ico",
+    "installerHeader": "build/windows/installerHeader.bmp",
+    "installerHeaderImage": "build/windows/installerHeaderImage.bmp",
+    "installerSidebar": "build/windows/installerSidebar.bmp",
+    "uninstallDisplayName": "deepseek-chat-desktop",
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "runAfterInstall": false
+  },
+  "webview2": {
+    "description": "Microsoft Edge WebView2 is a browser control for Windows applications.",
+    "download": {
+      "url": "https://go.microsoft.com/fwlink/p/?LinkId=2124703",
+      "arm64Url": "https://go.microsoft.com/fwlink/p/?LinkId=2124703"
+    }
+  }
+}
