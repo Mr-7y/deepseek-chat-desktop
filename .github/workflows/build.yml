@@ -45,7 +45,7 @@ jobs:
 
       - name: Build application
         shell: bash
-        run: wails build -tags netgo -ldflags '-s -w'
+        run: wails build -tags "netgo webkit2_41" -ldflags '-s -w'
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
