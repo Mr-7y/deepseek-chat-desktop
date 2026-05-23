@@ -1,12 +1,16 @@
 <template>
-  <div class="app-container">
-    <iframe 
-      id="deepseek-iframe" 
-      src="https://chat.deepseek.com/" 
-      frameborder="0"
-    ></iframe>
+  <div class="loading">
+    <p>正在连接到 DeepSeek...</p>
   </div>
 </template>
+
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  window.location.href = 'https://chat.deepseek.com/'
+})
+</script>
 
 <style>
 * {
@@ -15,15 +19,20 @@
   box-sizing: border-box;
 }
 
-html, body, #app, .app-container {
+html, body, #app {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
-#deepseek-iframe {
+.loading {
   width: 100%;
   height: 100%;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background: #fff;
 }
 </style>
