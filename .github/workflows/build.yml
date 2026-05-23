@@ -34,13 +34,28 @@ jobs:
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
       - name: Check Wails version
-        run: wails version
+        run: |
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            go env GOPATH
+          else
+            echo "PATH=$(go env GOPATH)/bin" >> $GITHUB_PATH
+          fi
+          wails version
 
       - name: Install frontend dependencies
         run: cd frontend && npm install
 
-      - name: Build application
-        run: export PATH=$PATH:$(go env GOPATH)/bin && wails build -tags netgo -ldflags '-s -w'
+      - name: Build application (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: |
+          export PATH=$PATH:$(go env GOPATH)/bin
+          wails build -tags netgo -ldflags '-s -w'
+
+      - name: Build application (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          $env:Path += ";C:\Users\runneradmin\go\bin"
+          wails build -tags netgo -ldflags '-s -w'
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
