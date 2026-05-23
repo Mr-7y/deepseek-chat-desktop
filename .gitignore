@@ -1,5 +1,6 @@
 # Build output
-dist/
+dist/*
+!dist/.gitkeep
 build/bin/
 build/app/
 *.exe
